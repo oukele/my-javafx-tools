@@ -1,18 +1,11 @@
 package com.oukele.mytools.controller;
 
 
-import com.oukele.mytools.service.FileSearcher;
 import com.oukele.mytools.utils.WinUtils;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
-import javafx.stage.DirectoryChooser;
-import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * 主界面控制类
@@ -58,6 +51,16 @@ public class MainController {
      */
     @FXML
     public void openTelnetTestUiEvent(ActionEvent actionEvent) throws IOException {
-        WinUtils.openDefaultSystemUi("telnet-test-view","Telnet 测试");
+        WinUtils.openDefaultSystemUi("telnet-test-view", "Telnet 测试");
+    }
+
+    /**
+     * 打开搜索文件页面
+     *
+     * @param actionEvent 事件
+     */
+    @FXML
+    public void openSearchFileUiEvent(ActionEvent actionEvent) throws IOException {
+        WinUtils.openDefaultSystemUi("search-file-view", "搜索文件");
     }
 }

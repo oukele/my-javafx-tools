@@ -19,11 +19,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * 搜索内容控制器
+ * 搜索文件控制器
  *
  * @author oukele
  */
-public class SearchContentController implements Initializable {
+public class SearchFileController implements Initializable {
 
     @FXML
     public TextField dirPath;
@@ -77,13 +77,13 @@ public class SearchContentController implements Initializable {
             search.setDisable(true);
             selectDir.setDisable(true);
             // 开始处理
-            new FileSearcher().searchFilesContent(
+            new FileSearcher().searchFiles(
                     // 目录路径
                     dirPathText,
                     // 关键字
                     findContentText,
                     // onFound
-                    filePath -> Platform.runLater(() -> resultContent.appendText("文件中包含 " + findContentText + " , " + filePath + "\n")),
+                    filePath -> Platform.runLater(() -> resultContent.appendText("文件名中包含 " + findContentText + " , " + filePath + "\n")),
                     // onComplete
                     () -> Platform.runLater(() -> {
                         resultContent.appendText("搜索完成！\n");

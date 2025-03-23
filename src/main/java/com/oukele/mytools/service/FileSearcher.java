@@ -13,9 +13,29 @@ import java.util.function.Consumer;
 
 public class FileSearcher {
 
-
     /**
      * 异步搜索包含关键字的文件。
+     *
+     * @param dirPath    目录路径
+     * @param keyword    关键字
+     * @param onFound    匹配到文件时的回调函数
+     * @param onComplete 搜索完成时的回调函数
+     * @param onError    发生错误时的回调函数
+     */
+    public void searchFilesContent(String dirPath, String keyword, Consumer<String> onFound, Runnable onComplete, Consumer<String> onError) {
+        File directory = new File(dirPath);
+        new Thread(() -> {
+            try {
+                searchFolder(directory, keyword, "content", onFound);
+                onComplete.run(); // 搜索完成
+            } catch (Exception e) {
+                onError.accept("遍历目录时发生错误：" + e.getMessage());
+            }
+        }).start();
+    }
+
+    /**
+     * 异步搜索包含关键字的文件名。
      *
      * @param dirPath    目录路径
      * @param keyword    关键字
@@ -27,7 +47,7 @@ public class FileSearcher {
         File directory = new File(dirPath);
         new Thread(() -> {
             try {
-                searchFolder(directory, keyword, onFound);
+                searchFolder(directory, keyword, "file", onFound);
                 onComplete.run(); // 搜索完成
             } catch (Exception e) {
                 onError.accept("遍历目录时发生错误：" + e.getMessage());
@@ -35,7 +55,7 @@ public class FileSearcher {
         }).start();
     }
 
-    public void searchFolder(File folder, String keyword, Consumer<String> onFound) {
+    public void searchFolder(File folder, String keyword, String type, Consumer<String> onFound) {
         File[] files = folder.listFiles();
         if (files == null) {
             return;
@@ -44,11 +64,20 @@ public class FileSearcher {
         for (File file : files) {
             if (file.isDirectory()) {
                 // 如果是文件夹，则递归遍历
-                searchFolder(file, keyword, onFound);
+                searchFolder(file, keyword, type, onFound);
             } else {
                 // 如果是文件，则检查文件内容中是否包含关键字
-                if (containsKeyword(file, keyword)) {
-                    onFound.accept(file.getPath());
+                if ("content".equals(type)) {
+                    // 如果是文件，则检查文件内容中是否包含关键字
+                    if (containsKeyword(file, keyword)) {
+                        onFound.accept(file.getPath());
+                    }
+                    // 找文件名
+                } else if ("file".equals(type)) {
+                    String name = file.getName();
+                    if (name.toLowerCase().contains(keyword.toLowerCase())) {
+                        onFound.accept(file.getPath());
+                    }
                 }
             }
         }
@@ -111,4 +140,6 @@ public class FileSearcher {
         }
         return null;
     }
+
+
 }
