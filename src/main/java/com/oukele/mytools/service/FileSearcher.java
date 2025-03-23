@@ -4,7 +4,9 @@ package com.oukele.mytools.service;
  * @author oukele
  */
 
-import org.mozilla.universalchardet.UniversalDetector;
+
+import com.ibm.icu.text.CharsetDetector;
+import com.ibm.icu.text.CharsetMatch;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -123,19 +125,27 @@ public class FileSearcher {
      */
     public static String detectFileEncoding(File file) {
         byte[] buf = new byte[4096];
-        try (FileInputStream fis = new FileInputStream(file)) {
-            UniversalDetector detector = new UniversalDetector(null);
+        try (FileInputStream fis = new FileInputStream(file);
+             ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
             int nread;
-            while ((nread = fis.read(buf)) > 0 && !detector.isDone()) {
-                detector.handleData(buf, 0, nread);
+            // 这里可以增加一个条件判断，如样本数据超过一定大小时退出循环
+            while ((nread = fis.read(buf)) > 0) {
+                baos.write(buf, 0, nread);
+                // 例如：若已读取超过 8KB，则退出
+                if (baos.size() > 8192) {
+                    break;
+                }
             }
-            // 通知 detector 数据读取完毕
-            detector.dataEnd();
-            String encoding = detector.getDetectedCharset();
-            detector.reset();
-            return encoding;
+
+            // 累积到的样本数据
+            byte[] sampleBytes = baos.toByteArray();
+
+            // 使用 ICU4J 进行编码检测
+            CharsetDetector detector = new CharsetDetector();
+            detector.setText(sampleBytes);
+            CharsetMatch match = detector.detect();
+            return match != null ? match.getName() : null;
         } catch (IOException e) {
-//            System.err.println("检测编码时出错: " + file.getAbsolutePath());
             e.printStackTrace();
         }
         return null;
