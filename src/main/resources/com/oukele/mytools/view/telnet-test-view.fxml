@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane fx:id="root" prefHeight="403.0" prefWidth="530.0" xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oukele.mytools.controller.TelnetTestController">
+    <TextArea fx:id="content" layoutX="2.0" layoutY="5.0" prefHeight="139.0" prefWidth="242.0" promptText="请输入内容">
+        <font>
+            <Font size="18.0"/>
+        </font>
+    </TextArea>
+    <TitledPane animated="false" layoutX="267.0" layoutY="5.0" prefHeight="139.0" prefWidth="242.0" text="内容格式要求">
+        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <Label layoutX="4.0" layoutY="3.0" prefHeight="18.0" prefWidth="60.0" text="格式如下："/>
+            <Label layoutX="3.0" layoutY="24.0" prefHeight="15.0" prefWidth="234.0" text="192.168.10.1 3306"/>
+            <Label layoutX="4.0" layoutY="38.0" prefHeight="15.0" prefWidth="234.0" text="192.168.10.1 8080"/>
+            <Label layoutX="5.0" layoutY="52.0" prefHeight="15.0" prefWidth="234.0" text="..."/>
+            <Label layoutX="7.0" layoutY="69.0" prefHeight="15.0" prefWidth="234.0"
+                   text="ip 空格 端口号！！多个端口一定要换行"/>
+        </AnchorPane>
+        <font>
+            <Font size="14.0"/>
+        </font>
+    </TitledPane>
+    <Button fx:id="startButton" layoutX="204.0" layoutY="155.0" mnemonicParsing="false" onAction="#startTestEvent" prefHeight="33.0"
+            prefWidth="99.0" styleClass="btn-primary" text="启动测试"/>
+
+    <TextArea fx:id="resultContent" editable="false" layoutX="36.0" layoutY="202.0" prefHeight="165.0" prefWidth="461.0"
+              promptText="测试结果输出">
+        <font>
+            <Font size="14.0"/>
+        </font>
+    </TextArea>
+</AnchorPane>

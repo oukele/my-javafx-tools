@@ -1,0 +1,16 @@
+/* 自适应布局增强 */
+.text-area {
+    -fx-font-family: "Consolas";
+    -fx-font-size: 12px;
+}
+
+/* 进度指示器样式 */
+.progress-indicator {
+    -fx-progress-color: #2ecc71;
+}
+
+/* 按钮悬停效果 */
+.button:hover {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}

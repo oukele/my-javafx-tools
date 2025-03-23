@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<TabPane
+        maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+        prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/23.0.1"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="com.oukele.mytools.controller.MainController"
+>
+    <tabs>
+        <Tab text="搜索工具">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <Button onAction="#openSearchContentUiEvent" styleClass="btn-primary" layoutX="12.0" layoutY="10.0" mnemonicParsing="false"
+                        prefHeight="38.0" prefWidth="78.0" text="搜索内容"/>
+            </AnchorPane>
+        </Tab>
+        <Tab text="网络工具">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <Button onAction="#openTelnetTestUiEvent" styleClass="btn-primary" layoutX="12.0" layoutY="10.0" mnemonicParsing="false" prefHeight="38.0"
+                        prefWidth="78.0" text="端口测试"/>
+            </AnchorPane>
+        </Tab>
+    </tabs>
+</TabPane>
