@@ -62,6 +62,7 @@ public class TelnetTestController implements Initializable {
         String contentText = content.getText();
         if (StrUtil.isEmpty(contentText)) {
             WinUtils.commonAlert("请先输入内容！");
+            return;
         }
 
         // 按钮禁用

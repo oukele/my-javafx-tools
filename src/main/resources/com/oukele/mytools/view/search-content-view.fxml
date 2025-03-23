@@ -1,13 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="400.0" prefWidth="609.0" xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oukele.mytools.controller.SearchContentController">
+    <Button fx:id="selectDir" layoutX="503.0" layoutY="14.0" mnemonicParsing="false" onAction="#selectDirEvent"
+            prefHeight="30.0" prefWidth="98.0" styleClass="btn-info" text="选择文件夹">
+        <font>
+            <Font size="14.0"/>
+        </font>
+    </Button>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            prefHeight="400.0" prefWidth="600.0">
-
+    <TextField fx:id="dirPath" editable="false" layoutX="131.0" layoutY="11.0" prefHeight="34.0" prefWidth="365.0"
+               promptText="请选择文件夹路径...">
+        <font>
+            <Font size="14.0"/>
+        </font>
+    </TextField>
+    <Label layoutX="9.0" layoutY="18.0" text="选择的文件夹路径：">
+        <font>
+            <Font name="System Bold" size="14.0"/>
+        </font>
+    </Label>
+    <Label layoutX="50.0" layoutY="68.0" text="查找的内容：">
+        <font>
+            <Font name="System Bold" size="14.0"/>
+        </font>
+    </Label>
+    <TextField fx:id="findContent" layoutX="131.0" layoutY="60.0" prefHeight="34.0" prefWidth="366.0"
+               promptText="请输入查找的内容">
+        <font>
+            <Font size="14.0"/>
+        </font>
+    </TextField>
+    <Button fx:id="search" layoutX="503.0" layoutY="62.0" mnemonicParsing="false" onAction="#searchEvent"
+            prefHeight="30.0" prefWidth="98.0" styleClass="btn-primary" text="开始搜索">
+        <font>
+            <Font size="14.0"/>
+        </font>
+    </Button>
+    <TextArea fx:id="resultContent" editable="false" layoutX="11.0" layoutY="120.0" prefHeight="270.0"
+              prefWidth="586.0">
+        <font>
+            <Font size="14.0"/>
+        </font>
+    </TextArea>
 </AnchorPane>
