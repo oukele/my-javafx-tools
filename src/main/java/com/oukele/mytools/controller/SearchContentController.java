@@ -1,6 +1,7 @@
 package com.oukele.mytools.controller;
 
 import cn.hutool.core.util.StrUtil;
+import com.oukele.mytools.constant.SystemConstant;
 import com.oukele.mytools.service.FileSearcher;
 import com.oukele.mytools.utils.WinUtils;
 import javafx.application.Platform;
@@ -16,6 +17,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 /**
@@ -45,6 +47,13 @@ public class SearchContentController implements Initializable {
             stage.setResizable(false);
 
             resultContent.setFont(new Font(16));
+            // 加载配置文件
+            Properties properties = new MainController().loadProperties();
+            // 设置搜索内容路径
+            String searchContentPathValue = properties.getProperty(SystemConstant.SEARCH_CONTENT_PATH_KEY);
+            if (StrUtil.isNotEmpty(searchContentPathValue)) {
+                dirPath.setText(searchContentPathValue);
+            }
         });
     }
 

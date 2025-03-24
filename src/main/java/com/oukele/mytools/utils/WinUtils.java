@@ -68,7 +68,7 @@ public class WinUtils {
     }
 
     /**
-     * 通用的提示对话框
+     * 通用警告的提示对话框
      *
      * @param msg 提示信息
      */
@@ -81,5 +81,17 @@ public class WinUtils {
         alert.showAndWait();
     }
 
+    /**
+     * 通用普通的提示对话框
+     * @param msg 提示信息
+     */
+    public static void commonInfo(String msg) {
+        // 如果内容为空，弹出提示对话框
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("系统提示");
+        alert.setHeaderText(null);
+        alert.setContentText(msg);
+        alert.showAndWait();
+    }
 
 }

@@ -1,6 +1,7 @@
 package com.oukele.mytools.controller;
 
 import cn.hutool.core.util.StrUtil;
+import com.oukele.mytools.constant.SystemConstant;
 import com.oukele.mytools.utils.WinUtils;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -16,6 +17,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.URL;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 /**
@@ -48,6 +50,13 @@ public class TelnetTestController implements Initializable {
             Stage stage = (Stage) root.getScene().getWindow();
             // 设置窗口不可拉伸
             stage.setResizable(false);
+            // 加载配置文件
+            Properties properties = new MainController().loadProperties();
+            // 设置Telnet内容
+            String telnetContentValue = properties.getProperty(SystemConstant.TELNET_CONTENT_KEY);
+            if (StrUtil.isNotEmpty(telnetContentValue)) {
+                content.setText(telnetContentValue);
+            }
         });
 
     }
