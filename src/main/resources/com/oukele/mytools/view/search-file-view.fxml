@@ -40,10 +40,10 @@
             <Font size="14.0"/>
         </font>
     </Button>
-    <TextArea fx:id="resultContent" editable="false" layoutX="11.0" layoutY="120.0" prefHeight="270.0"
-              prefWidth="586.0">
-        <font>
-            <Font size="14.0"/>
-        </font>
-    </TextArea>
+    <TableView fx:id="tableView" layoutX="13.0" layoutY="113.0" prefHeight="274.0" prefWidth="587.0">
+        <columns>
+            <TableColumn fx:id="findPathColumn" prefWidth="494.3998899459839" text="找到的路径"/>
+            <TableColumn fx:id="actionColumn" prefWidth="82.4000244140625" text="操作"/>
+        </columns>
+    </TableView>
 </AnchorPane>
