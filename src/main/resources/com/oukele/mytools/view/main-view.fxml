@@ -6,12 +6,15 @@
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
          prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/23.0.1"
          xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oukele.mytools.controller.MainController">
-    <Tab text="搜索工具">
+    <Tab text="文件工具">
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
             <Button layoutX="12.0" layoutY="10.0" mnemonicParsing="false" onAction="#openSearchContentUiEvent"
                     prefHeight="38.0" prefWidth="78.0" styleClass="btn-primary" text="搜索内容"/>
             <Button layoutX="100.0" layoutY="10.0" mnemonicParsing="false" onAction="#openSearchFileUiEvent"
                     prefHeight="38.0" prefWidth="78.0" styleClass="btn-info" text="搜索文件"/>
+
+            <Button layoutX="188.0" layoutY="10.0" mnemonicParsing="false" onAction="#eliminateFileComments"
+                    prefHeight="38.0" prefWidth="85.0" styleClass="btn-success" text="消除lua注释"/>
         </AnchorPane>
     </Tab>
     <Tab text="网络工具">
@@ -22,30 +25,27 @@
     </Tab>
     <Tab text="全局配置">
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-            <ScrollPane layoutX="14.0" layoutY="8.0" prefHeight="371.2" prefWidth="600.0"
-                        AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                        AnchorPane.topAnchor="0.0">
+            <ScrollPane layoutX="14.0" layoutY="8.0" prefHeight="371.2" prefWidth="600.0" AnchorPane.bottomAnchor="0.0"
+                        AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                 <AnchorPane prefHeight="270.0" prefWidth="590.0">
-                    <Label layoutX="5.0" layoutY="18.0" prefHeight="27.0" prefWidth="119.0"
-                           text="搜内容全局路径:">
+                    <Label layoutX="5.0" layoutY="18.0" prefHeight="27.0" prefWidth="119.0" text="搜内容全局路径:">
                         <font>
                             <Font size="14.0"/>
                         </font>
                     </Label>
-                    <TextField fx:id="searchContentPath" layoutX="112.0" layoutY="11.0" prefHeight="38.0" prefWidth="379.0"
-                               promptText="请手动输入复制文件夹路径到此处">
+                    <TextField fx:id="searchContentPath" layoutX="112.0" layoutY="11.0" prefHeight="38.0"
+                               prefWidth="379.0" promptText="请手动输入复制文件夹路径到此处">
                         <font>
                             <Font size="14.0"/>
                         </font>
                     </TextField>
-                    <Button onAction="#searchContentPathEvent" layoutX="504.0" layoutY="17.0" mnemonicParsing="false" prefHeight="29.0"
-                            prefWidth="64.0" text="应用">
+                    <Button layoutX="504.0" layoutY="17.0" mnemonicParsing="false" onAction="#searchContentPathEvent"
+                            prefHeight="29.0" prefWidth="64.0" text="应用">
                         <font>
                             <Font size="14.0"/>
                         </font>
                     </Button>
-                    <Label layoutX="5.0" layoutY="74.0" prefHeight="27.0" prefWidth="119.0"
-                           text="搜文件全局路径:">
+                    <Label layoutX="5.0" layoutY="74.0" prefHeight="27.0" prefWidth="119.0" text="搜文件全局路径:">
                         <font>
                             <Font size="14.0"/>
                         </font>
@@ -56,14 +56,13 @@
                             <Font size="14.0"/>
                         </font>
                     </TextField>
-                    <Button onAction="#searchFilePathEvent" layoutX="504.0" layoutY="73.0" mnemonicParsing="false" prefHeight="29.0"
-                            prefWidth="64.0" text="应用">
+                    <Button layoutX="504.0" layoutY="73.0" mnemonicParsing="false" onAction="#searchFilePathEvent"
+                            prefHeight="29.0" prefWidth="64.0" text="应用">
                         <font>
                             <Font size="14.0"/>
                         </font>
                     </Button>
-                    <Label layoutX="6.0" layoutY="124.0" prefHeight="27.0" prefWidth="105.0"
-                           text="       Telnet设置:">
+                    <Label layoutX="6.0" layoutY="124.0" prefHeight="27.0" prefWidth="105.0" text="       Telnet设置:">
                         <font>
                             <Font size="14.0"/>
                         </font>
@@ -74,8 +73,8 @@
                             <Font size="14.0"/>
                         </font>
                     </TextArea>
-                    <Button onAction="#telnetContentEvent" layoutX="504.0" layoutY="127.0" mnemonicParsing="false" prefHeight="29.0"
-                            prefWidth="64.0" text="应用">
+                    <Button layoutX="504.0" layoutY="127.0" mnemonicParsing="false" onAction="#telnetContentEvent"
+                            prefHeight="29.0" prefWidth="64.0" text="应用">
                         <font>
                             <Font size="14.0"/>
                         </font>

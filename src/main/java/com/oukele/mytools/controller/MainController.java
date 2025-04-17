@@ -84,6 +84,16 @@ public class MainController implements Initializable {
     }
 
     /**
+     * 消除文件注释
+     *
+     * @param actionEvent 事件
+     */
+    @FXML
+    public void eliminateFileComments(ActionEvent actionEvent) throws IOException {
+        WinUtils.openDefaultSystemUi("eliminate-file-comments-view", "消除文件注释");
+    }
+
+    /**
      * 保存搜索内容路径
      *
      * @param actionEvent 事件
